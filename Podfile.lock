@@ -1,0 +1,34 @@
+PODS:
+  - CleverTap-iOS-SDK (3.10.0):
+    - SDWebImage (~> 5.1)
+  - CTNotificationService (0.1.4)
+  - mParticle-Apple-SDK/mParticle (8.8.0)
+  - mParticle-CleverTap (8.0.2):
+    - CleverTap-iOS-SDK (~> 3.9)
+    - mParticle-Apple-SDK/mParticle (~> 8.0)
+  - SDWebImage (5.12.5):
+    - SDWebImage/Core (= 5.12.5)
+  - SDWebImage/Core (5.12.5)
+
+DEPENDENCIES:
+  - CTNotificationService
+  - mParticle-CleverTap (~> 8.0)
+
+SPEC REPOS:
+  trunk:
+    - CleverTap-iOS-SDK
+    - CTNotificationService
+    - mParticle-Apple-SDK
+    - mParticle-CleverTap
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  CleverTap-iOS-SDK: 1e38a25eee5bdb3e525c5c8497504bc64b7d695d
+  CTNotificationService: 43d6e66c78bc338bde3db173d615d8cde5f104f7
+  mParticle-Apple-SDK: fbef6ad9fe5e418d60ee57b7b0ccb5117672c585
+  mParticle-CleverTap: cd9da9ff8303e465a74cf8d417b10867c474eaf9
+  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
+
+PODFILE CHECKSUM: 7d35acb38360ccecbfd2d7c35271fd82d2638648
+
+COCOAPODS: 1.10.2

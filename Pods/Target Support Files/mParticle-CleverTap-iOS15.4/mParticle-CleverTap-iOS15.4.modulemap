@@ -1,0 +1,6 @@
+framework module mParticle_CleverTap {
+  umbrella header "mParticle-CleverTap-iOS15.4-umbrella.h"
+
+  export *
+  module * { export * }
+}

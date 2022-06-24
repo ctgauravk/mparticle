@@ -1,0 +1,6 @@
+framework module Pods_ct_push_ct_pushUITests {
+  umbrella header "Pods-ct_push-ct_pushUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

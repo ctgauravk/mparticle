@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-ct_push-ct_pushUITests/Pods-ct_push-ct_pushUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/CleverTap-iOS-SDK-iOS13.0/CleverTapSDK.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage-iOS13.0/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/mParticle-Apple-SDK-iOS13.0/mParticle_Apple_SDK.framework
+${BUILT_PRODUCTS_DIR}/mParticle-CleverTap-iOS13.0/mParticle_CleverTap.framework
