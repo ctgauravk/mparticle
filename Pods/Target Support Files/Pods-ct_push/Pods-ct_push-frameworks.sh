@@ -175,18 +175,16 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/CleverTap-iOS-SDK-iOS13.0/CleverTapSDK.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage-iOS13.0/SDWebImage.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/mParticle-Apple-SDK-iOS13.0/mParticle_Apple_SDK.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/mParticle-CleverTap-iOS13.0/mParticle_CleverTap.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CleverTap-iOS-SDK/CleverTapSDK.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CTNotificationService/CTNotificationService.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CTNotificationContent/CTNotificationContent.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/CleverTap-iOS-SDK-iOS13.0/CleverTapSDK.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage-iOS13.0/SDWebImage.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/mParticle-Apple-SDK-iOS13.0/mParticle_Apple_SDK.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/mParticle-CleverTap-iOS13.0/mParticle_CleverTap.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CleverTap-iOS-SDK/CleverTapSDK.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CTNotificationService/CTNotificationService.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CTNotificationContent/CTNotificationContent.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

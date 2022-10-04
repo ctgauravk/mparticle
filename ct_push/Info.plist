@@ -2,12 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.clevertap.ct-push</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ctpush</string>
+			</array>
+		</dict>
+	</array>
+	<key>CleverTapAccountID</key>
+	<string>6ZR-965-446Z</string>
 	<key>CleverTapDisableIDFV</key>
 	<true/>
 	<key>CleverTapToken</key>
 	<string>56c-216</string>
-	<key>CleverTapAccountID</key>
-	<string>6ZR-965-446Z</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -27,5 +40,11 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>

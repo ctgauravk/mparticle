@@ -7,8 +7,8 @@ target 'ct_push' do
 
   # Pods for ct_push
 
-#  pod 'CleverTap-iOS-SDK'
-  pod 'mParticle-CleverTap', '~> 8.0'
+  pod 'CleverTap-iOS-SDK'
+#  pod 'mParticle-CleverTap', '~> 8.0'
 
   
   target 'ct_pushTests' do
@@ -26,8 +26,20 @@ target 'rich' do
   use_frameworks!
 
   # Pods for ct_integration
-#  pod 'CleverTap-iOS-SDK'#, '~> 3.9.4'
-pod 'mParticle-CleverTap', '~> 8.0'
+  pod 'CleverTap-iOS-SDK'#, '~> 3.9.4'
+#pod 'mParticle-CleverTap', '~> 8.0'
 
   pod 'CTNotificationService'
+end
+
+target 'rich_content' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for ct_integration
+  pod 'CleverTap-iOS-SDK'#, '~> 3.9.4'
+#pod 'mParticle-CleverTap', '~> 8.0'
+
+  pod 'CTNotificationContent'
+
 end
