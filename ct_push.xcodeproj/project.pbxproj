@@ -107,6 +107,7 @@
 		9138FE5228648701006B8A2C /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		9138FE5428648701006B8A2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9138FE5C286489AA006B8A2C /* rich.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rich.entitlements; sourceTree = "<group>"; };
+		9174504528F586AF0039B0B7 /* rich_content.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rich_content.entitlements; sourceTree = "<group>"; };
 		95A43F355DD26F14090AF1A1 /* Pods_ct_push.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ct_push.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B6197E961E664F650D8AFE /* Pods_ct_push_ct_pushUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ct_push_ct_pushUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E465FD2BBD0485953A8483 /* Pods-ct_pushTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ct_pushTests.debug.xcconfig"; path = "Target Support Files/Pods-ct_pushTests/Pods-ct_pushTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +199,7 @@
 		9125E14828EC374C004E1E90 /* rich_content */ = {
 			isa = PBXGroup;
 			children = (
+				9174504528F586AF0039B0B7 /* rich_content.entitlements */,
 				9125E14928EC374C004E1E90 /* NotificationViewController.swift */,
 				9125E14B28EC374C004E1E90 /* MainInterface.storyboard */,
 				9125E14E28EC374C004E1E90 /* Info.plist */,
@@ -714,9 +716,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D86DC6985A70ECBE649CF8B3 /* Pods-rich_content.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = rich_content/rich_content.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P23JK9V8BF;
+				DEVELOPMENT_TEAM = G9355AB4R7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = rich_content/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = rich_content;
@@ -728,7 +731,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.clevertap.ct-push.rich-content";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.clevertap.ctpush.rich-content";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -741,9 +744,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5FB2882B68C80AF4B68F3C3E /* Pods-rich_content.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = rich_content/rich_content.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P23JK9V8BF;
+				DEVELOPMENT_TEAM = G9355AB4R7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = rich_content/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = rich_content;
@@ -755,7 +759,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.clevertap.ct-push.rich-content";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.clevertap.ctpush.rich-content";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -888,9 +892,10 @@
 				CODE_SIGN_ENTITLEMENTS = ct_push/ct_push.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P23JK9V8BF;
+				DEVELOPMENT_TEAM = G9355AB4R7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ct_push/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Push;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -901,8 +906,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.clevertap.ct-push";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clevertap.ctpush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -920,9 +925,10 @@
 				CODE_SIGN_ENTITLEMENTS = ct_push/ct_push.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P23JK9V8BF;
+				DEVELOPMENT_TEAM = G9355AB4R7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ct_push/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Push;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -933,8 +939,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.clevertap.ct-push";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clevertap.ctpush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1029,7 +1035,7 @@
 				CODE_SIGN_ENTITLEMENTS = rich/rich.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P23JK9V8BF;
+				DEVELOPMENT_TEAM = G9355AB4R7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = rich/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = rich;
@@ -1041,7 +1047,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.clevertap.ct-push.rich";
+				PRODUCT_BUNDLE_IDENTIFIER = com.clevertap.ctpush.rich;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1057,7 +1063,7 @@
 				CODE_SIGN_ENTITLEMENTS = rich/rich.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P23JK9V8BF;
+				DEVELOPMENT_TEAM = G9355AB4R7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = rich/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = rich;
@@ -1069,7 +1075,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.clevertap.ct-push.rich";
+				PRODUCT_BUNDLE_IDENTIFIER = com.clevertap.ctpush.rich;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

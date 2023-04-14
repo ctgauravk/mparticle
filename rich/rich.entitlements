@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.P23JK9V8BF.com.ctpush</string>
+		<string>group.nativeios</string>
 	</array>
 </dict>
 </plist>

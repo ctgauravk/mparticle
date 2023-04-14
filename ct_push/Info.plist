@@ -8,10 +8,20 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.clevertap.ct-push</string>
+			<string>com.clevertap.ctpush</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>ctpush</string>
+				<string>myctappdeeplink</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>https://clevertap.page.link</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>home</string>
 			</array>
 		</dict>
 	</array>

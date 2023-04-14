@@ -15,7 +15,7 @@ class NotificationService: CTNotificationServiceExtension {
     var bestAttemptContent: UNMutableNotificationContent?
 
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
-        let defaults = UserDefaults.init(suiteName: "group.com.ctpush")
+        let defaults = UserDefaults.init(suiteName: "group.nativeios")
 
         //for logged in users onuserLogin called so impression goes to right profile
         let logged_in = defaults?.value(forKey: "logged_in")
@@ -35,6 +35,9 @@ class NotificationService: CTNotificationServiceExtension {
     
                    CleverTap.sharedInstance()?.onUserLogin(profile)
             }
+        
+//        CleverTap.sharedInstance()?.isCleverTapNotification(response.notification.request.content.userInfo) == true
+        
         CleverTap.sharedInstance()?.recordNotificationViewedEvent(withData: request.content.userInfo)
         super.didReceive(request, withContentHandler: contentHandler)
     }

@@ -7,17 +7,35 @@
 		<key>ct_push.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>12</integer>
 		</dict>
 		<key>rich.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>11</integer>
 		</dict>
 		<key>rich_content.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>10</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>9125E14428EC374C004E1E90</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9138FE17286474D8006B8A2C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9138FE4F28648701006B8A2C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

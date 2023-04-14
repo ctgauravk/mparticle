@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2C436110D24F9E159DD6AC7FE4A87B1E"
-               BuildableName = "Pods_ct_push.framework"
-               BlueprintName = "Pods-ct_push"
+               BlueprintIdentifier = "BF4329E7251597C78DC2DFB4904691F5"
+               BuildableName = "Pods_rich_content.framework"
+               BlueprintName = "Pods-rich_content"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

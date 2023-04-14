@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2C436110D24F9E159DD6AC7FE4A87B1E"
-               BuildableName = "Pods_ct_push.framework"
-               BlueprintName = "Pods-ct_push"
+               BlueprintIdentifier = "E12536816B6C31D7AF55D161F6F97141"
+               BuildableName = "CleverTapSDK.framework"
+               BlueprintName = "CleverTap-iOS-SDK"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

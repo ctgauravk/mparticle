@@ -8,7 +8,14 @@
 import UIKit
 import CleverTapSDK
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, CleverTapURLDelegate, CleverTapPushNotificationDelegate {
+    
+    func shouldHandleCleverTap(_ url: URL?, for channel: CleverTapChannel) -> Bool {
+        print("Handling URL by CT App: \(url!) for channel: \(channel)")
+        
+        return true
+    }
+    
 
 
 
@@ -18,9 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.registerPush()
         CleverTap.setDebugLevel(3)
         UNUserNotificationCenter.current().delegate = self
-        
+        CleverTap.sharedInstance()?.setUrlDelegate(self)
+        CleverTap.sharedInstance()?.setPushNotificationDelegate(self)
+        CleverTap.sharedInstance()?.enableDeviceNetworkInfoReporting(true)
         return true
     }
+     
     
     private func registerPush() {
         UNUserNotificationCenter.current().delegate = self
@@ -40,12 +50,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
+    func pushNotificationTapped(withCustomExtras customExtras: [AnyHashable : Any]!) {
+          print("Push Notification Tapped with Custom Extras: \(customExtras)")
+      
+    }
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                     didReceive response: UNNotificationResponse,
                                     withCompletionHandler completionHandler: @escaping () -> Void) {
             
        
-        CleverTap.sharedInstance()?.handleNotification(withData: response.notification.request.content.userInfo)
+//        CleverTap.sharedInstance()?.handleNotification(withData: response.notification.request.content.userInfo)
         
         completionHandler()
             
@@ -57,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
       withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 //        completionHandler([.banner, .badge, .sound])
       
-      CleverTap.sharedInstance()?.handleNotification(withData: notification.request.content.userInfo, openDeepLinksInForeground: true)
+//      CleverTap.sharedInstance()?.handleNotification(withData: notification.request.content.userInfo, openDeepLinksInForeground: true)
       completionHandler([.badge, .sound, .alert])
   }
 

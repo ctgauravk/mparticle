@@ -14,17 +14,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let c_email = "andy@gmail.com"
+        let c_email = "naoya@gmail.com"
       let profile: Dictionary<String, Any> =
         [
-            "Name": "Ruiz",
+            "Name": "Naoya",
             "Email": c_email,
 //            "Phone":"9087654321",
             "MSG-email": false,                     // Disable email notifications
             "MSG-push": true,                       // Enable push notifications
             "MSG-sms": false
         ]
-        let defaults = UserDefaults.init(suiteName: "group.com.ctpush")
+        let defaults = UserDefaults.init(suiteName: "group.nativeios")
         defaults?.setValue(c_email, forKey: "email")
         defaults?.set(true, forKey: "logged_in")
 
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         let profile: Dictionary<String, Any> =
         [
             "Name": "fury",
-            "Email": "fury@gmail.com",
+            "Email": "fury123@gmail.com",
 //            "Phone":"9087654321",
             "MSG-email": false,                     // Disable email notifications
             "MSG-push": true,                       // Enable push notifications
@@ -95,8 +95,8 @@ class ViewController: UIViewController {
         ]
 //        UserDefaults.standard.set("fury@gmail.com", forKey: "email")
  
-        let defaults = UserDefaults.init(suiteName: "group.P23JK9V8BF.com.ctpush")
-        defaults?.setValue("fury@gmail.com", forKey: "email")
+        let defaults = UserDefaults.init(suiteName: "group.nativeios")
+        defaults?.setValue("fury123@gmail.com", forKey: "email")
         
         let email = defaults?.value(forKey: "email") //Hello World!
 
