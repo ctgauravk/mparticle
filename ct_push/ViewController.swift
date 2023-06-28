@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let c_email = "naoya@gmail.com"
+        let c_email = "naoy1a@gmail.com"
       let profile: Dictionary<String, Any> =
         [
             "Name": "Naoya",
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         let profile: Dictionary<String, Any> =
         [
             "Name": "fury",
-            "Email": "fury123@gmail.com",
+            "Email": "fury1234@gmail.com",
 //            "Phone":"9087654321",
             "MSG-email": false,                     // Disable email notifications
             "MSG-push": true,                       // Enable push notifications
@@ -108,6 +108,7 @@ class ViewController: UIViewController {
     @IBAction func pushEvent(_ sender: UIButton) {
         CleverTap.sharedInstance()?.recordEvent("Screen View")
 
+        
     }
     
 }

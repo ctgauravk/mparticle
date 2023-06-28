@@ -21,30 +21,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        CleverTap.autoIntegrate()
-        self.registerPush()
+//        CleverTap.autoIntegrate()
+        self.registerForPush()
         CleverTap.setDebugLevel(3)
         UNUserNotificationCenter.current().delegate = self
         CleverTap.sharedInstance()?.setUrlDelegate(self)
         CleverTap.sharedInstance()?.setPushNotificationDelegate(self)
         CleverTap.sharedInstance()?.enableDeviceNetworkInfoReporting(true)
+//        self.applicationDidBecomeActive(<#T##application: UIApplication##UIApplication#>)
+        UIApplication.shared.applicationIconBadgeNumber = 0
+
         return true
     }
      
     
-    private func registerPush() {
+    private func registerForPush() {
         UNUserNotificationCenter.current().delegate = self
-        let action1 = UNNotificationAction(identifier: "action_1", title: "Back", options: [])
-        let action2 = UNNotificationAction(identifier: "action_2", title: "Next", options: [])
-        let action3 = UNNotificationAction(identifier: "action_3", title: "View In App", options: [])
-        let category = UNNotificationCategory(identifier: "CTNotification", actions: [action1, action2, action3], intentIdentifiers: [], options: [])
-        UNUserNotificationCenter.current().setNotificationCategories([category])
+//        let action1 = UNNotificationAction(identifier: "action_1", title: "Back", options: [])
+//        let action2 = UNNotificationAction(identifier: "action_2", title: "Next", options: [])
+//        let action3 = UNNotificationAction(identifier: "action_3", title: "View In App", options: [])
+//        let category = UNNotificationCategory(identifier: "CTNotification", actions: [action1, action2, action3], intentIdentifiers: [], options: [])
+//        UNUserNotificationCenter.current().setNotificationCategories([category])
         // request permissions
         UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) {
             (granted, error) in
             if (granted) {
                 DispatchQueue.main.async {
+                    print("Push Notification permission asked 1")
+
                    UIApplication.shared.registerForRemoteNotifications()
+                    print("Push Notification permission asked 2")
+
                 }
             }
         }
@@ -72,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
       withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 //        completionHandler([.banner, .badge, .sound])
       
-//      CleverTap.sharedInstance()?.handleNotification(withData: notification.request.content.userInfo, openDeepLinksInForeground: true)
+      CleverTap.sharedInstance()?.handleNotification(withData: notification.request.content.userInfo, openDeepLinksInForeground: true)
       completionHandler([.badge, .sound, .alert])
   }
 
@@ -83,6 +90,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("did fail to register \(error.localizedDescription)")
+    }
+
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         // Called when the user discards a scene session.
@@ -90,10 +102,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
-    private func application(application: UIApplication,
-                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
+    }
+    
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        print(token)
+        print("Push Notification permission asked 3 \(token)")
+               
         CleverTap.sharedInstance()?.setPushToken(deviceToken as Data)
     }
 

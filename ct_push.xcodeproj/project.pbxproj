@@ -108,6 +108,7 @@
 		9138FE5428648701006B8A2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9138FE5C286489AA006B8A2C /* rich.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rich.entitlements; sourceTree = "<group>"; };
 		9174504528F586AF0039B0B7 /* rich_content.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rich_content.entitlements; sourceTree = "<group>"; };
+		91D882AD2A37064A00B584C7 /* ct_push-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ct_push-Bridging-Header.h"; sourceTree = "<group>"; };
 		95A43F355DD26F14090AF1A1 /* Pods_ct_push.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ct_push.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B6197E961E664F650D8AFE /* Pods_ct_push_ct_pushUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ct_push_ct_pushUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E465FD2BBD0485953A8483 /* Pods-ct_pushTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ct_pushTests.debug.xcconfig"; path = "Target Support Files/Pods-ct_pushTests/Pods-ct_pushTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -244,6 +245,7 @@
 				9138FE24286474DA006B8A2C /* Assets.xcassets */,
 				9138FE26286474DA006B8A2C /* LaunchScreen.storyboard */,
 				9138FE29286474DB006B8A2C /* Info.plist */,
+				91D882AD2A37064A00B584C7 /* ct_push-Bridging-Header.h */,
 			);
 			path = ct_push;
 			sourceTree = "<group>";
@@ -390,6 +392,7 @@
 					};
 					9138FE17286474D8006B8A2C = {
 						CreatedOnToolsVersion = 13.3;
+						LastSwiftMigration = 1420;
 					};
 					9138FE2D286474DB006B8A2C = {
 						CreatedOnToolsVersion = 13.3;
@@ -889,9 +892,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ct_push/ct_push.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = G9355AB4R7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ct_push/Info.plist;
@@ -906,10 +910,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.clevertap.ctpush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ct_push/ct_push-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -922,9 +928,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ct_push/ct_push.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = G9355AB4R7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ct_push/Info.plist;
@@ -939,10 +946,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.clevertap.ctpush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ct_push/ct_push-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
