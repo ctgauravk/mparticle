@@ -37,11 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     private func registerForPush() {
         UNUserNotificationCenter.current().delegate = self
-//        let action1 = UNNotificationAction(identifier: "action_1", title: "Back", options: [])
-//        let action2 = UNNotificationAction(identifier: "action_2", title: "Next", options: [])
-//        let action3 = UNNotificationAction(identifier: "action_3", title: "View In App", options: [])
-//        let category = UNNotificationCategory(identifier: "CTNotification", actions: [action1, action2, action3], intentIdentifiers: [], options: [])
-//        UNUserNotificationCenter.current().setNotificationCategories([category])
+        let action1 = UNNotificationAction(identifier: "action_1", title: "Back", options: [])
+        let action2 = UNNotificationAction(identifier: "action_2", title: "Next", options: [])
+        let action3 = UNNotificationAction(identifier: "action_3", title: "View In App", options: [])
+        let category = UNNotificationCategory(identifier: "CTNotification", actions: [action1, action2, action3], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([category])
         // request permissions
         UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) {
             (granted, error) in
