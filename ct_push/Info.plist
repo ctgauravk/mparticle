@@ -24,13 +24,19 @@
 				<string>TG78</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.clevertap.ctpush</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>dolap://</string>
+			</array>
+		</dict>
 	</array>
-	<key>CleverTapAccountID</key>
-	<string>6ZR-965-446Z</string>
-	<key>CleverTapDisableIDFV</key>
-	<true/>
-	<key>CleverTapToken</key>
-	<string>56c-216</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

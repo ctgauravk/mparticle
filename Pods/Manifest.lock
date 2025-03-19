@@ -1,30 +1,35 @@
 PODS:
-  - CleverTap-iOS-SDK (4.1.2):
-    - SDWebImage (~> 5.1)
-  - CTNotificationContent (0.2.1)
-  - CTNotificationService (0.1.5)
-  - SDWebImage (5.13.4):
-    - SDWebImage/Core (= 5.13.4)
-  - SDWebImage/Core (5.13.4)
+  - CleverTap-iOS-SDK (7.1.1):
+    - SDWebImage (~> 5.11)
+  - CTNotificationContent (0.2.7)
+  - CTNotificationService (0.1.7)
+  - Leanplum-iOS-SDK (6.6.0):
+    - CleverTap-iOS-SDK (~> 7.1)
+  - SDWebImage (5.21.0):
+    - SDWebImage/Core (= 5.21.0)
+  - SDWebImage/Core (5.21.0)
 
 DEPENDENCIES:
   - CleverTap-iOS-SDK
   - CTNotificationContent
   - CTNotificationService
+  - Leanplum-iOS-SDK
 
 SPEC REPOS:
   trunk:
     - CleverTap-iOS-SDK
     - CTNotificationContent
     - CTNotificationService
+    - Leanplum-iOS-SDK
     - SDWebImage
 
 SPEC CHECKSUMS:
-  CleverTap-iOS-SDK: edae0f34d6478c85e864256f5a06051687029aa3
-  CTNotificationContent: 887d502727071a21bcae1c7ace7b79014d61a45b
-  CTNotificationService: 844eb0cf5a6260b76e05420dde49312b72c5ad7c
-  SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
+  CleverTap-iOS-SDK: 8ee6dc5c6f3952f39c837e64ba24f0053f0d6196
+  CTNotificationContent: 149ec0d68884bf26ef0c045199f6a4e1b5a22dfd
+  CTNotificationService: 3eceea27cf0e28a2e14267bb706013363eb620c6
+  Leanplum-iOS-SDK: 023033893e363d2144f38b590b429102492f044f
+  SDWebImage: f84b0feeb08d2d11e6a9b843cb06d75ebf5b8868
 
-PODFILE CHECKSUM: 47c2a3fdb570bbae3ee0ce697cf74e29c19d2937
+PODFILE CHECKSUM: 411b78874d33a4eb646e9a1e182959acf7b487aa
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.16.2

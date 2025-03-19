@@ -1,0 +1,42 @@
+{
+  "originHash" : "375053d66e4df37fc864800ea0b21ec910c272d415cbaa2736a37fcc23a20bfb",
+  "pins" : [
+    {
+      "identity" : "clevertap-geofence-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CleverTap/clevertap-geofence-ios.git",
+      "state" : {
+        "revision" : "15ff423e73f158c747730624d847acbce89bbc11",
+        "version" : "1.0.6"
+      }
+    },
+    {
+      "identity" : "clevertap-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CleverTap/clevertap-ios-sdk.git",
+      "state" : {
+        "revision" : "4326cc44d928b062a04ec770e20c318cc2699076",
+        "version" : "6.2.1"
+      }
+    },
+    {
+      "identity" : "ctnotificationservice",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CleverTap/CTNotificationService.git",
+      "state" : {
+        "revision" : "9fb05bd25296f62be89d0ed0542a8473a96234e1",
+        "version" : "0.1.7"
+      }
+    },
+    {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "state" : {
+        "revision" : "cac9a55a3ae92478a2c95042dcc8d9695d2129ca",
+        "version" : "5.21.0"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9138FE4F28648701006B8A2C"
+               BlueprintIdentifier = "91A341742D8AA0FB001D36BA"
                BuildableName = "rich.appex"
                BlueprintName = "rich"
                ReferencedContainer = "container:ct_push.xcodeproj">
@@ -42,10 +42,30 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9138FE2D286474DB006B8A2C"
+               BuildableName = "ct_pushTests.xctest"
+               BlueprintName = "ct_pushTests"
+               ReferencedContainer = "container:ct_push.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9138FE37286474DB006B8A2C"
+               BuildableName = "ct_pushUITests.xctest"
+               BlueprintName = "ct_pushUITests"
+               ReferencedContainer = "container:ct_push.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = ""
       selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
@@ -56,8 +76,12 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "0"
+         BundleIdentifier = "com.clevertap.ctpush"
+         RemotePath = "/var/containers/Bundle/Application/F0872A62-8CCC-4D69-8CB4-2CC97DE0F5D7/ct_push.app">
+      </RemoteRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9138FE17286474D8006B8A2C"
@@ -65,7 +89,7 @@
             BlueprintName = "ct_push"
             ReferencedContainer = "container:ct_push.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

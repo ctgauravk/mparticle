@@ -6,7 +6,8 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:https://zeenews.india.com/hindi/zeeodisha</string>
+		<string>applinks:https://clevertap.page.link/TG78</string>
+		<string>applinks:https://clevertap.page.link/home</string>
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>

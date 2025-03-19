@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-ct_push/Pods-ct_push-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/CleverTap-iOS-SDK/CleverTapSDK.framework
+${BUILT_PRODUCTS_DIR}/Leanplum-iOS-SDK/Leanplum.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${BUILT_PRODUCTS_DIR}/CTNotificationService/CTNotificationService.framework
 ${BUILT_PRODUCTS_DIR}/CTNotificationContent/CTNotificationContent.framework

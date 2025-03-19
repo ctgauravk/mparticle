@@ -9,14 +9,21 @@
 #import "SDImageIOCoder.h"
 #import "SDImageCoderHelper.h"
 #import "NSImage+Compatibility.h"
-#import <ImageIO/ImageIO.h>
 #import "UIImage+Metadata.h"
+#import "SDImageGraphics.h"
 #import "SDImageIOAnimatedCoderInternal.h"
 
-// Specify DPI for vector format in CGImageSource, like PDF
-static NSString * kSDCGImageSourceRasterizationDPI = @"kCGImageSourceRasterizationDPI";
+#import <ImageIO/ImageIO.h>
+#import <CoreServices/CoreServices.h>
+
 // Specify File Size for lossy format encoding, like JPEG
 static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestinationRequestedFileSize";
+// Support Xcode 15 SDK, use raw value instead of symbol
+static NSString * kSDCGImageDestinationEncodeRequest = @"kCGImageDestinationEncodeRequest";
+static NSString * kSDCGImageDestinationEncodeToSDR = @"kCGImageDestinationEncodeToSDR";
+static NSString * kSDCGImageDestinationEncodeToISOHDR = @"kCGImageDestinationEncodeToISOHDR";
+static NSString * kSDCGImageDestinationEncodeToISOGainmap = @"kCGImageDestinationEncodeToISOGainmap";
+
 
 @implementation SDImageIOCoder {
     size_t _width, _height;
@@ -26,7 +33,21 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
     BOOL _finished;
     BOOL _preserveAspectRatio;
     CGSize _thumbnailSize;
+    BOOL _lazyDecode;
+    BOOL _decodeToHDR;
 }
+
+#if SD_IMAGEIO_HDR_ENCODING
++ (void)initialize {
+    if (@available(macOS 15, iOS 18, tvOS 18, watchOS 11, *)) {
+        // Use SDK instead of raw value
+        kSDCGImageDestinationEncodeRequest = (__bridge NSString *)kCGImageDestinationEncodeRequest;
+        kSDCGImageDestinationEncodeToSDR = (__bridge NSString *)kCGImageDestinationEncodeToSDR;
+        kSDCGImageDestinationEncodeToISOHDR = (__bridge NSString *)kCGImageDestinationEncodeToISOHDR;
+        kSDCGImageDestinationEncodeToISOGainmap = (__bridge NSString *)kCGImageDestinationEncodeToISOGainmap;
+    }
+}
+#endif
 
 - (void)dealloc {
     if (_imageSource) {
@@ -54,29 +75,65 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
     return coder;
 }
 
-#pragma mark - Utils
-+ (CGRect)boxRectFromPDFFData:(nonnull NSData *)data {
+#pragma mark - Bitmap PDF representation
++ (UIImage *)createBitmapPDFWithData:(nonnull NSData *)data pageNumber:(NSUInteger)pageNumber targetSize:(CGSize)targetSize preserveAspectRatio:(BOOL)preserveAspectRatio {
+    NSParameterAssert(data);
+    UIImage *image;
+    
     CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)data);
     if (!provider) {
-        return CGRectZero;
+        return nil;
     }
     CGPDFDocumentRef document = CGPDFDocumentCreateWithProvider(provider);
     CGDataProviderRelease(provider);
     if (!document) {
-        return CGRectZero;
+        return nil;
     }
     
     // `CGPDFDocumentGetPage` page number is 1-indexed.
-    CGPDFPageRef page = CGPDFDocumentGetPage(document, 1);
+    CGPDFPageRef page = CGPDFDocumentGetPage(document, pageNumber + 1);
     if (!page) {
         CGPDFDocumentRelease(document);
-        return CGRectZero;
+        return nil;
     }
     
-    CGRect boxRect = CGPDFPageGetBoxRect(page, kCGPDFMediaBox);
+    CGPDFBox box = kCGPDFMediaBox;
+    CGRect rect = CGPDFPageGetBoxRect(page, box);
+    CGRect targetRect = rect;
+    if (!CGSizeEqualToSize(targetSize, CGSizeZero)) {
+        targetRect = CGRectMake(0, 0, targetSize.width, targetSize.height);
+    }
+    
+    CGFloat xRatio = targetRect.size.width / rect.size.width;
+    CGFloat yRatio = targetRect.size.height / rect.size.height;
+    CGFloat xScale = preserveAspectRatio ? MIN(xRatio, yRatio) : xRatio;
+    CGFloat yScale = preserveAspectRatio ? MIN(xRatio, yRatio) : yRatio;
+    
+    // `CGPDFPageGetDrawingTransform` will only scale down, but not scale up, so we need calculate the actual scale again
+    CGRect drawRect = CGRectMake( 0, 0, targetRect.size.width / xScale, targetRect.size.height / yScale);
+    CGAffineTransform scaleTransform = CGAffineTransformMakeScale(xScale, yScale);
+    CGAffineTransform transform = CGPDFPageGetDrawingTransform(page, box, drawRect, 0, preserveAspectRatio);
+    
+    SDGraphicsBeginImageContextWithOptions(targetRect.size, NO, 0);
+    CGContextRef context = SDGraphicsGetCurrentContext();
+    
+#if SD_UIKIT || SD_WATCH
+    // Core Graphics coordinate system use the bottom-left, UIKit use the flipped one
+    CGContextTranslateCTM(context, 0, targetRect.size.height);
+    CGContextScaleCTM(context, 1, -1);
+#endif
+    
+    CGContextConcatCTM(context, scaleTransform);
+    CGContextConcatCTM(context, transform);
+    
+    CGContextDrawPDFPage(context, page);
+    
+    image = SDGraphicsGetImageFromCurrentImageContext();
+    SDGraphicsEndImageContext();
+    
     CGPDFDocumentRelease(document);
     
-    return boxRect;
+    return image;
 }
 
 #pragma mark - Decode
@@ -110,42 +167,73 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
         preserveAspectRatio = preserveAspectRatioValue.boolValue;
     }
     
-    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
+    // Check vector format
+    if ([NSData sd_imageFormatForImageData:data] == SDImageFormatPDF) {
+        // History before iOS 16, ImageIO can decode PDF with rasterization size, but can't ever :(
+        // So, use CoreGraphics to decode PDF (copy code from SDWebImagePDFCoder, may do refactor in the future)
+        UIImage *image;
+        NSUInteger pageNumber = 0; // Still use first page, may added options is user want
+#if SD_MAC
+        // If don't use thumbnail, prefers the built-in generation of vector image
+        // macOS's `NSImage` supports PDF built-in rendering
+        if (thumbnailSize.width == 0 || thumbnailSize.height == 0) {
+            NSPDFImageRep *imageRep = [[NSPDFImageRep alloc] initWithData:data];
+            if (imageRep) {
+                imageRep.currentPage = pageNumber;
+                image = [[NSImage alloc] initWithSize:imageRep.size];
+                [image addRepresentation:imageRep];
+                image.sd_imageFormat = SDImageFormatPDF;
+                return image;
+            }
+        }
+#endif
+        image = [self.class createBitmapPDFWithData:data pageNumber:pageNumber targetSize:thumbnailSize preserveAspectRatio:preserveAspectRatio];
+        image.sd_imageFormat = SDImageFormatPDF;
+        return image;
+    }
+    
+    BOOL lazyDecode = YES; // Defaults YES for static image coder
+    NSNumber *lazyDecodeValue = options[SDImageCoderDecodeUseLazyDecoding];
+    if (lazyDecodeValue != nil) {
+        lazyDecode = lazyDecodeValue.boolValue;
+    }
+    
+    BOOL decodeToHDR = [options[SDImageCoderDecodeToHDR] boolValue];
+    
+    NSString *typeIdentifierHint = options[SDImageCoderDecodeTypeIdentifierHint];
+    if (!typeIdentifierHint) {
+        // Check file extension and convert to UTI, from: https://stackoverflow.com/questions/1506251/getting-an-uniform-type-identifier-for-a-given-extension
+        NSString *fileExtensionHint = options[SDImageCoderDecodeFileExtensionHint];
+        if (fileExtensionHint) {
+            typeIdentifierHint = (__bridge_transfer NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)fileExtensionHint, kUTTypeImage);
+            // Ignore dynamic UTI
+            if (UTTypeIsDynamic((__bridge CFStringRef)typeIdentifierHint)) {
+                typeIdentifierHint = nil;
+            }
+        }
+    } else if ([typeIdentifierHint isEqual:NSNull.null]) {
+        // Hack if user don't want to imply file extension
+        typeIdentifierHint = nil;
+    }
+    
+    NSDictionary *creatingOptions = nil;
+    if (typeIdentifierHint) {
+        creatingOptions = @{(__bridge NSString *)kCGImageSourceTypeIdentifierHint : typeIdentifierHint};
+    }
+    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, (__bridge CFDictionaryRef)creatingOptions);
+    if (!source) {
+        // Try again without UTType hint, the call site from user may provide the wrong UTType
+        source = CGImageSourceCreateWithData((__bridge CFDataRef)data, nil);
+    }
     if (!source) {
         return nil;
     }
     
     CFStringRef uttype = CGImageSourceGetType(source);
     SDImageFormat imageFormat = [NSData sd_imageFormatFromUTType:uttype];
-    // Check vector format
-    NSDictionary *decodingOptions = nil;
-    if (imageFormat == SDImageFormatPDF) {
-        // Use 72 DPI (1:1 inch to pixel) by default, matching Apple's PDFKit behavior
-        NSUInteger rasterizationDPI = 72;
-        CGFloat maxPixelSize = MAX(thumbnailSize.width, thumbnailSize.height);
-        if (maxPixelSize > 0) {
-            // Calculate DPI based on PDF box and pixel size
-            CGRect boxRect = [self.class boxRectFromPDFFData:data];
-            CGFloat maxBoxSize = MAX(boxRect.size.width, boxRect.size.height);
-            if (maxBoxSize > 0) {
-                rasterizationDPI = rasterizationDPI * (maxPixelSize / maxBoxSize);
-            }
-        }
-        decodingOptions = @{
-            // This option will cause ImageIO return the pixel size from `CGImageSourceCopyProperties`
-            // If not provided, it always return 0 size
-            kSDCGImageSourceRasterizationDPI : @(rasterizationDPI),
-        };
-        // Already calculated DPI, avoid re-calculation based on thumbnail information
-        preserveAspectRatio = YES;
-        thumbnailSize = CGSizeZero;
-    }
     
-    UIImage *image = [SDImageIOAnimatedCoder createFrameAtIndex:0 source:source scale:scale preserveAspectRatio:preserveAspectRatio thumbnailSize:thumbnailSize forceDecode:NO options:decodingOptions];
+    UIImage *image = [SDImageIOAnimatedCoder createFrameAtIndex:0 source:source scale:scale preserveAspectRatio:preserveAspectRatio thumbnailSize:thumbnailSize lazyDecode:lazyDecode animatedImage:NO decodeToHDR:decodeToHDR];
     CFRelease(source);
-    if (!image) {
-        return nil;
-    }
     
     image.sd_imageFormat = imageFormat;
     return image;
@@ -183,6 +271,15 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
             preserveAspectRatio = preserveAspectRatioValue.boolValue;
         }
         _preserveAspectRatio = preserveAspectRatio;
+        BOOL lazyDecode = YES; // Defaults YES for static image coder
+        NSNumber *lazyDecodeValue = options[SDImageCoderDecodeUseLazyDecoding];
+        if (lazyDecodeValue != nil) {
+            lazyDecode = lazyDecodeValue.boolValue;
+        }
+        _lazyDecode = lazyDecode;
+        
+        _decodeToHDR = [options[SDImageCoderDecodeToHDR] boolValue];
+        
 #if SD_UIKIT
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarning:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
 #endif
@@ -233,7 +330,7 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
         if (scaleFactor != nil) {
             scale = MAX([scaleFactor doubleValue], 1);
         }
-        image = [SDImageIOAnimatedCoder createFrameAtIndex:0 source:_imageSource scale:scale preserveAspectRatio:_preserveAspectRatio thumbnailSize:_thumbnailSize forceDecode:NO options:nil];
+        image = [SDImageIOAnimatedCoder createFrameAtIndex:0 source:_imageSource scale:scale preserveAspectRatio:_preserveAspectRatio thumbnailSize:_thumbnailSize lazyDecode:_lazyDecode animatedImage:NO decodeToHDR:_finished ? _decodeToHDR : NO];
         if (image) {
             CFStringRef uttype = CGImageSourceGetType(_imageSource);
             image.sd_imageFormat = [NSData sd_imageFormatFromUTType:uttype];
@@ -257,7 +354,6 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
         // Earily return, supports CGImage only
         return nil;
     }
-    
     if (format == SDImageFormatUndefined) {
         BOOL hasAlpha = [SDImageCoderHelper CGImageContainsAlpha:imageRef];
         if (hasAlpha) {
@@ -266,7 +362,7 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
             format = SDImageFormatJPEG;
         }
     }
-    
+
     NSMutableData *imageData = [NSMutableData data];
     CFStringRef imageUTType = [NSData sd_UTTypeFromImageFormat:format];
     
@@ -303,6 +399,21 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
         maxPixelSize = maxPixelSizeValue.CGSizeValue;
 #endif
     }
+    // HDR Encoding
+    NSUInteger encodeToHDR = 0;
+    if (options[SDImageCoderEncodeToHDR]) {
+        encodeToHDR = [options[SDImageCoderEncodeToHDR] unsignedIntegerValue];
+    }
+    if (@available(macOS 15, iOS 18, tvOS 18, watchOS 11, *)) {
+        if (encodeToHDR == SDImageHDRTypeISOHDR) {
+            properties[kSDCGImageDestinationEncodeRequest] = kSDCGImageDestinationEncodeToISOHDR;
+        } else if (encodeToHDR == SDImageHDRTypeISOGainMap) {
+            properties[kSDCGImageDestinationEncodeRequest] = kSDCGImageDestinationEncodeToISOGainmap;
+        } else {
+            properties[kSDCGImageDestinationEncodeRequest] = kSDCGImageDestinationEncodeToSDR;
+        }
+    }
+    
     CGFloat pixelWidth = (CGFloat)CGImageGetWidth(imageRef);
     CGFloat pixelHeight = (CGFloat)CGImageGetHeight(imageRef);
     CGFloat finalPixelSize = 0;

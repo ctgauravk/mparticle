@@ -10,6 +10,7 @@
 #import "NSImage+Compatibility.h"
 #import "SDInternalMacros.h"
 #import "objc/runtime.h"
+#import "SDImageCoderHelper.h"
 
 @implementation UIImage (Metadata)
 
@@ -143,6 +144,7 @@
 
 - (BOOL)sd_isVector {
     NSRect imageRect = NSMakeRect(0, 0, self.size.width, self.size.height);
+    // This may returns a NSProxy, so don't use `class` to check
     NSImageRep *imageRep = [self bestRepresentationForRect:imageRect context:nil hints:nil];
     if ([imageRep isKindOfClass:[NSPDFImageRep class]]) {
         return YES;
@@ -150,7 +152,8 @@
     if ([imageRep isKindOfClass:[NSEPSImageRep class]]) {
         return YES;
     }
-    if ([NSStringFromClass(imageRep.class) hasSuffix:@"NSSVGImageRep"]) {
+    Class NSSVGImageRepClass = NSClassFromString([NSString stringWithFormat:@"_%@", SD_NSSTRING(NSSVGImageRep)]);
+    if ([imageRep isKindOfClass:NSSVGImageRepClass]) {
         return YES;
     }
     return NO;
@@ -184,8 +187,30 @@
     return value.boolValue;
 }
 
+- (void)setSd_isTransformed:(BOOL)sd_isTransformed {
+    objc_setAssociatedObject(self, @selector(sd_isTransformed), @(sd_isTransformed), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)sd_isTransformed {
+    NSNumber *value = objc_getAssociatedObject(self, @selector(sd_isTransformed));
+    return value.boolValue;
+}
+
 - (void)setSd_decodeOptions:(SDImageCoderOptions *)sd_decodeOptions {
     objc_setAssociatedObject(self, @selector(sd_decodeOptions), sd_decodeOptions, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+-(BOOL)sd_isThumbnail {
+    CGSize thumbnailSize = CGSizeZero;
+    NSValue *thumbnailSizeValue = self.sd_decodeOptions[SDImageCoderDecodeThumbnailPixelSize];
+    if (thumbnailSizeValue != nil) {
+    #if SD_MAC
+        thumbnailSize = thumbnailSizeValue.sizeValue;
+    #else
+        thumbnailSize = thumbnailSizeValue.CGSizeValue;
+    #endif
+    }
+    return thumbnailSize.width > 0 && thumbnailSize.height > 0;
 }
 
 - (SDImageCoderOptions *)sd_decodeOptions {
@@ -194,6 +219,18 @@
         return value;
     }
     return nil;
+}
+
+- (BOOL)sd_isHighDynamicRange {
+#if SD_MAC
+    return [SDImageCoderHelper CGImageIsHDR:self.CGImage];
+#else
+    if (@available(iOS 17, tvOS 17, watchOS 10, *)) {
+        return self.isHighDynamicRange;
+    } else {
+        return [SDImageCoderHelper CGImageIsHDR:self.CGImage];
+    }
+#endif
 }
 
 @end
