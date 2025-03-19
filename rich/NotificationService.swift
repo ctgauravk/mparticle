@@ -48,7 +48,7 @@
 //import EngageKit
 import UserNotifications
 import CTNotificationService
- //import CleverTapSDK
+import CleverTapSDK
 
 class NotificationService: CTNotificationServiceExtension {
     
@@ -68,9 +68,21 @@ class NotificationService: CTNotificationServiceExtension {
         bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
         print("Leanplum: 1")
         let defaults = UserDefaults.init(suiteName: "group.nativeios")
-        let logged_in = defaults?.object(forKey: "ctCallback")
+        let logged_in = defaults?.object(forKey: "ctid")
+        print("ct id $\(String(describing: logged_in))")
+        	
+//        CleverTap.sharedInstance()?.(withCleverTapID: logged_in as! String)
+        CleverTap.autoIntegrate(withCleverTapID: logged_in as! String)
+
+        let profile: Dictionary<String, AnyObject> = [
+            "MSG-push": true as AnyObject,                              // Enable push notifications
+        ]
         
-        //CleverTap.sharedInstance()?.recordNotificationViewedEvent(withData: request.content.userInfo)
+        
+        CleverTap.sharedInstance()?.profilePush(profile)
+
+        
+        CleverTap.sharedInstance()?.recordNotificationViewedEvent(withData: request.content.userInfo)
         //didReceiveEngageSetup(request, withContentHandler: contentHandler)
         didReceiveLeanplumWrapperSetup(request, withContentHandler: contentHandler)
     }

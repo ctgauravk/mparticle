@@ -180,15 +180,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     let ctCallback = CleverTapInstanceCallback { cleverTapInstance in
         
         
-      cleverTapInstance.enableDeviceNetworkInfoReporting(true)
+        cleverTapInstance.enableDeviceNetworkInfoReporting(true)
+        let defaults = UserDefaults.init(suiteName: "group.nativeios")
+        print("Leanplum: \(String(describing: cleverTapInstance.profileGetID()))")
+        defaults?.set(cleverTapInstance.profileGetID()!, forKey: "ctid")
         
-        
+         let logged_in = defaults?.object(forKey: "ctid")
+        print("ct id $\(String(describing: logged_in))")
     }
       
       
 
     Leanplum.addCleverTapInstance(callback: ctCallback)
-      
       
     
       

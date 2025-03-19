@@ -43,6 +43,7 @@
 		09DE1940A9C20824197FD99E7A4C8BD4 /* CleverTapPushNotificationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BA953E693122C4277AFB3F52E4A0557 /* CleverTapPushNotificationDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		09F8C759134213656B129D93BE58CD85 /* AmazonRootCA1.cer in Resources */ = {isa = PBXBuildFile; fileRef = 744AD4D7DE68D1478BF2BF219B3343CC /* AmazonRootCA1.cer */; };
 		0A0A27736805A8464DDE768DC27A018B /* Thread+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE64AC34ABCFA5A41A458664195E348C /* Thread+Name.swift */; };
+		0AD906CD01034D0E0DF6BC0ABB73C382 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9152A5EF6BA0EA122D13FF9C19263B0E /* Foundation.framework */; };
 		0B1A8CC5B6922B643685C8A2A6174C0D /* LPRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B75AA70613472CD366166D6F98467B3 /* LPRequestFactory.m */; };
 		0B294DA9A4BBBCCEE10F100FE0AE320F /* CTInAppTriggerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D4A0F529D2F5716235C0340D19ED72 /* CTInAppTriggerManager.m */; };
 		0C526769CEECC6FFFFA3982D40700B19 /* CTIdentityRepoFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 263A57AA00F3109370AC02B8B1F838A5 /* CTIdentityRepoFactory.m */; };
@@ -132,7 +133,6 @@
 		26BE3C18E9858F8EDC3C40EA8DD4FCD7 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A69E08CFA87162EFD7F36248EE3D6C3 /* UIImage+MultiFormat.m */; };
 		26E6F6666A7161CC35BC750A112254D1 /* CTEventBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F42FD3A0F9CEA0D762FC98B5A40F6EA /* CTEventBuilder.m */; };
 		272089CA11BF63D37D4AA0A0BFD0238D /* LPPushAskToAskMessageTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 417292F984DDEAF24BBFB1FEBAB745D1 /* LPPushAskToAskMessageTemplate.m */; };
-		275413BDD042A16B73681BB872C71133 /* Pods-rich-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 061B480C4AF34F7679607F16B5D120AD /* Pods-rich-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		285A1EF7539277ACBCB123246B650107 /* CTInboxIconMessageCell~port.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F31280641E0EABFC6DEEEDDF7AA379C /* CTInboxIconMessageCell~port.xib */; };
 		28C72A2A7CE983769FEDC64369A25EC8 /* LPRequestBatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 49791861B69B5BE899EF40A1F55C55A6 /* LPRequestBatch.m */; };
 		28D2BD361D48133C1B71B4E3F75EC028 /* CTSwizzleManager.h in Headers */ = {isa = PBXBuildFile; fileRef = AFD08ABD3CA46264FC964DDD10F04B5F /* CTSwizzleManager.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -460,6 +460,7 @@
 		957580056D44A401E63C86D901C745F2 /* CTCoverViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8930A31D6BD71D3631E01AE64F35C3 /* CTCoverViewController~ipad.xib */; };
 		9652BAEBE56D43921F11BE5C4439939B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 74B90D732EA18AF3DC818C3CAE8271DD /* PrivacyInfo.xcprivacy */; };
 		96819D6B6F40E74B147395BD30E7EEC9 /* CTAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B09F0B2398841A3F4573A532E1846038 /* CTAlertViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		976E97D336FD6C8DB8D114154997D939 /* Pods-rich-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F92BEE187621C47E17BAB1EF12AFB9EB /* Pods-rich-dummy.m */; };
 		97870059675AEAD353DEFFF1EAC279ED /* LPCenterPopupMessageTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD8090C31DCD6EF4EAD0E2FEC68D0E9 /* LPCenterPopupMessageTemplate.m */; };
 		97E6FBB477884E86F67CEB97ED335519 /* SDWebImageDownloaderDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC3460AAC0BC4FF23494DB9A23C9950 /* SDWebImageDownloaderDecryptor.m */; };
 		9826A8B6121CA555572B008AF145A9F3 /* CTInterstitialImageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D3C1501F50FB815901375145A6EC5E7 /* CTInterstitialImageViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -486,6 +487,7 @@
 		9CB86E2B7A2749C1D8CFD828A2BA6A03 /* CTInAppFCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9334E292916B8FD2F71644830802C2E2 /* CTInAppFCManager.m */; };
 		9CD7FA2E2B07794AD9654880B4355A73 /* SDWebImageOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4361FB7BE6F881A77C4615CCAD852A7D /* SDWebImageOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9CEA3D4DB0A15B9A3333D112CAB0ED52 /* CTTriggerValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8346E80576799FA2FABC0D0C2C67815D /* CTTriggerValue.m */; };
+		9D013E0A33D2F0722C404B66AE16C2C8 /* Pods-rich-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 061B480C4AF34F7679607F16B5D120AD /* Pods-rich-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D6E638AB8D8B6EBFEC11CBB52156475 /* CleverTap+PushPermission.h in Headers */ = {isa = PBXBuildFile; fileRef = 895BDA080742594AF63F4CA59F3E3859 /* CleverTap+PushPermission.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9DDCEE28E214F96E4B9410BD17781FAC /* NotificationsProxy+Disabled.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B9F066FDFE48659600CF31912FF1E1 /* NotificationsProxy+Disabled.swift */; };
 		9E14258C94391B5B20C0E7DD1842667D /* CTHalfInterstitialImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2453BB5DF1118B59893E89419E462005 /* CTHalfInterstitialImageViewController.m */; };
@@ -506,7 +508,6 @@
 		A2EFADF4DC678E15FD2C274BA8DD81D1 /* UIAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F58B6C261384464D6009023473C5C /* UIAlert.swift */; };
 		A330E5B68EB1D96FFF8A7357B65EEFCE /* CTSingleMediaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FB41CAF245EE9A471B8A76B392A171 /* CTSingleMediaController.swift */; };
 		A378BE55E5DB9F8E993B04A536AD16E8 /* UIColor+SDHexString.m in Sources */ = {isa = PBXBuildFile; fileRef = C21F7CDF28FFA146FD58F7DEA87889C5 /* UIColor+SDHexString.m */; };
-		A38853190FDCBA3F0DCB93C37285C42A /* Pods-rich-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F92BEE187621C47E17BAB1EF12AFB9EB /* Pods-rich-dummy.m */; };
 		A3F1BCA78FC2908EB9A6FB8A44C40235 /* MigrationManager+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AFC1DC58FA5779F641394FDF461AA0 /* MigrationManager+API.swift */; };
 		A48A174B7E56EE0CA521A8E39FE1ADD6 /* CleverTapInstanceCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB38C26AD5DF2317A2AAF8A66952A6F /* CleverTapInstanceCallback.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A4AF3256118D0E23BA2B88270642D6C7 /* CTLimitsMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = BC12E84DFC10C4A54156759890D3F795 /* CTLimitsMatcher.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -625,7 +626,6 @@
 		CA0F8984C95D56DDB8B791D1A14A400A /* CTInboxBaseMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2446D69F83400CA0EC0E154C56FDD9 /* CTInboxBaseMessageCell.m */; };
 		CAA314EFFCEFBD29058AF6DC7958A1A8 /* LPActionTriggerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 263C6342C65B5269085C6FCCAAC28C60 /* LPActionTriggerManager.m */; };
 		CACA230DFACF53E50B92180E7B900D95 /* SDFileAttributeHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A15FAE7EB376337B91CCC51E727B8AA1 /* SDFileAttributeHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		CAD96DA66831ABDC0437CDBA8E63EBB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9152A5EF6BA0EA122D13FF9C19263B0E /* Foundation.framework */; };
 		CB7E31E738DE894AD50E99FA061D8784 /* CTPlistInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2567A593ACA315C7E35BC64C998504AD /* CTPlistInfo.m */; };
 		CBF71606D9AEC75B6FCDE96FA5691E28 /* CTInboxBaseMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B126152BA2323ACEC4DA7724FDF82DCB /* CTInboxBaseMessageCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CC689E679BB37EE61194F9BBAA5E298A /* NotificationsProxy+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEC10B6BA32D4ED296247AB8539B6F4 /* NotificationsProxy+Utilities.swift */; };
@@ -783,12 +783,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0543CBB1B52657C8ACEA67D36DA3F991 /* PBXContainerItemProxy */ = {
+		152C8C35ACF23C1DB76967BC903755A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 86FB8B900AC183944EB17B33627AE62F;
-			remoteInfo = CTNotificationService;
+			remoteGlobalIDString = 3847153A6E5EEFB86565BA840768F429;
+			remoteInfo = SDWebImage;
 		};
 		19785BFAAE269AD101DD1CF989D0BD82 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -818,6 +818,13 @@
 			remoteGlobalIDString = CC2BBEA7303CC916333A2C10AD13DB8A;
 			remoteInfo = CTNotificationContent;
 		};
+		5FBA361160D147487D7B614DCC5195D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 86FB8B900AC183944EB17B33627AE62F;
+			remoteInfo = CTNotificationService;
+		};
 		5FE7D82583942FD5CCB7ED179D3B31D0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -838,6 +845,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3BDDCDFCA8633FC28798031462AD1410;
 			remoteInfo = "CleverTap-iOS-SDK-CleverTapSDK";
+		};
+		87866EE0CB6F0623D4E3259D61E6D940 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E12536816B6C31D7AF55D161F6F97141;
+			remoteInfo = "CleverTap-iOS-SDK";
 		};
 		95CBA774168B4A8D6B1A662518A07E47 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1781,6 +1795,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		25AF90C6D1459B36655AF126275B648B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0AD906CD01034D0E0DF6BC0ABB73C382 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		454B299492FF072C62DF95790955A3B6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1875,14 +1897,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EEC2A074748EC69AEDE6CA228D74DD4A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CAD96DA66831ABDC0437CDBA8E63EBB2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3085,6 +3099,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		69E0818A9F2CF6F2A37AFD03232C8B91 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D013E0A33D2F0722C404B66AE16C2C8 /* Pods-rich-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		833EED0D3726F35EB3B6AA3368ECDE9E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -3251,14 +3273,6 @@
 				5BD933E9D338813EAD418F6C25B0A2A4 /* LeanplumCT.h in Headers */,
 				65CA4CBB87E424B26B0C8CFAA9CEFBB5 /* NSDictionary+Extensions.h in Headers */,
 				D00BA5384EA3005982630E915644E680 /* UIView+CTToast.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F2103ADA42812145C9A1A5C47F0EC0F2 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				275413BDD042A16B73681BB872C71133 /* Pods-rich-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3488,17 +3502,19 @@
 		};
 		62DDDC528471406AB4823FC2BEE5DD46 /* Pods-rich */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4B26C49E5C4B248C0D81945A66D34C58 /* Build configuration list for PBXNativeTarget "Pods-rich" */;
+			buildConfigurationList = 68BC9200087F4364372BEFB21EA4D8F5 /* Build configuration list for PBXNativeTarget "Pods-rich" */;
 			buildPhases = (
-				F2103ADA42812145C9A1A5C47F0EC0F2 /* Headers */,
-				138FC181EA0A097DC7A0F66F72471FC5 /* Sources */,
-				EEC2A074748EC69AEDE6CA228D74DD4A /* Frameworks */,
-				862E129DA8E6A0D61E439C3772317489 /* Resources */,
+				69E0818A9F2CF6F2A37AFD03232C8B91 /* Headers */,
+				9080C038E6CBE5938E8FD66B5D6A42A2 /* Sources */,
+				25AF90C6D1459B36655AF126275B648B /* Frameworks */,
+				9C0B076D71CCABB525B168C5DF1FCAD4 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E321DC21FF23624BCCB4D40A57277645 /* PBXTargetDependency */,
+				81B02825DB39003E95A2BE46AD0B77CB /* PBXTargetDependency */,
+				748BEC0CD7D1B2C3FF74F50BFD8A467E /* PBXTargetDependency */,
+				213E484016BEF08822439E5DE74963A2 /* PBXTargetDependency */,
 			);
 			name = "Pods-rich";
 			productName = Pods_rich;
@@ -3808,13 +3824,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		862E129DA8E6A0D61E439C3772317489 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		98582BD64E72E21FEEA05CC8B1D4B487 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3823,6 +3832,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		9975A3AB082F84B53634AA749FC75415 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C0B076D71CCABB525B168C5DF1FCAD4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3873,14 +3889,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		138FC181EA0A097DC7A0F66F72471FC5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A38853190FDCBA3F0DCB93C37285C42A /* Pods-rich-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		213884BFD4167DA51DEE790BB5D7506C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4046,6 +4054,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1EABD91E0FF147953C27C5150830B26 /* Pods-rich_content-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9080C038E6CBE5938E8FD66B5D6A42A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				976E97D336FD6C8DB8D114154997D939 /* Pods-rich-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4352,6 +4368,12 @@
 			target = E12536816B6C31D7AF55D161F6F97141 /* CleverTap-iOS-SDK */;
 			targetProxy = D20FA61EE124FD7F6E97EA8F81224137 /* PBXContainerItemProxy */;
 		};
+		213E484016BEF08822439E5DE74963A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SDWebImage;
+			target = 3847153A6E5EEFB86565BA840768F429 /* SDWebImage */;
+			targetProxy = 152C8C35ACF23C1DB76967BC903755A9 /* PBXContainerItemProxy */;
+		};
 		22131202CC259503B32C90F3AB039009 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SDWebImage-SDWebImage";
@@ -4400,11 +4422,23 @@
 			target = E12536816B6C31D7AF55D161F6F97141 /* CleverTap-iOS-SDK */;
 			targetProxy = AE707A6023D062410F22F214D6542ABE /* PBXContainerItemProxy */;
 		};
+		748BEC0CD7D1B2C3FF74F50BFD8A467E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CleverTap-iOS-SDK";
+			target = E12536816B6C31D7AF55D161F6F97141 /* CleverTap-iOS-SDK */;
+			targetProxy = 87866EE0CB6F0623D4E3259D61E6D940 /* PBXContainerItemProxy */;
+		};
 		7EFD061414C9FD3950BCE4007E9B225C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CTNotificationContent;
 			target = CC2BBEA7303CC916333A2C10AD13DB8A /* CTNotificationContent */;
 			targetProxy = 33C8F77C9D94BFEBAA445A2902DB24BF /* PBXContainerItemProxy */;
+		};
+		81B02825DB39003E95A2BE46AD0B77CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CTNotificationService;
+			target = 86FB8B900AC183944EB17B33627AE62F /* CTNotificationService */;
+			targetProxy = 5FBA361160D147487D7B614DCC5195D8 /* PBXContainerItemProxy */;
 		};
 		87AB8A637D8B2A30BAB2180C7CD387A4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4447,12 +4481,6 @@
 			name = SDWebImage;
 			target = 3847153A6E5EEFB86565BA840768F429 /* SDWebImage */;
 			targetProxy = E107CBC1074008E624FEC13CB32A1C5D /* PBXContainerItemProxy */;
-		};
-		E321DC21FF23624BCCB4D40A57277645 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CTNotificationService;
-			target = 86FB8B900AC183944EB17B33627AE62F /* CTNotificationService */;
-			targetProxy = 0543CBB1B52657C8ACEA67D36DA3F991 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4894,45 +4922,6 @@
 			};
 			name = Debug;
 		};
-		83E6336B12C04C3D034F8290DD1CAE61 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 40BEFDD76E46FF0DC43535E38F3E7844 /* Pods-rich.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-rich/Pods-rich-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-rich/Pods-rich.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		8A6833D350296C377FF5A5E02C584B5F /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F7375C3318C83B14A98732F9050446D4 /* Pods-rich_content.release.xcconfig */;
@@ -5211,7 +5200,7 @@
 			};
 			name = Debug;
 		};
-		B15553808738B6AAA45900E4FD5C1B67 /* Release */ = {
+		AA9B0317327961A4CBF79BE3D5BA865B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C58C010BF9ABDEF0A3629931EFC67E27 /* Pods-rich.release.xcconfig */;
 			buildSettings = {
@@ -5443,6 +5432,45 @@
 			};
 			name = Release;
 		};
+		E8800B1AF4D30EE29E18EA75C4F74959 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40BEFDD76E46FF0DC43535E38F3E7844 /* Pods-rich.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-rich/Pods-rich-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-rich/Pods-rich.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		F4304980088A365EFC23B15E2FB4DE4B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5F19E47BCAD1E2DCF7791A6A0C74937F /* CTNotificationContent.debug.xcconfig */;
@@ -5569,15 +5597,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4B26C49E5C4B248C0D81945A66D34C58 /* Build configuration list for PBXNativeTarget "Pods-rich" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				83E6336B12C04C3D034F8290DD1CAE61 /* Debug */,
-				B15553808738B6AAA45900E4FD5C1B67 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		537327956B51D9BF88B7B8BA2F38B48B /* Build configuration list for PBXNativeTarget "CleverTap-iOS-SDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -5601,6 +5620,15 @@
 			buildConfigurations = (
 				A9CDC59B5915FD140BD777C127BF7C7A /* Debug */,
 				179A3449A8D320065B3408B2683EDF1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68BC9200087F4364372BEFB21EA4D8F5 /* Build configuration list for PBXNativeTarget "Pods-rich" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8800B1AF4D30EE29E18EA75C4F74959 /* Debug */,
+				AA9B0317327961A4CBF79BE3D5BA865B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

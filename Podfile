@@ -35,7 +35,7 @@ target 'rich' do
   pod 'CTNotificationService'
 #  pod 'Leanplum-iOS-SDK'#, '6.1.1'
   
-  #pod 'CleverTap-iOS-SDK'#, '~> 3.9.4'
+  pod 'CleverTap-iOS-SDK'#, '~> 3.9.4'
 
 
 #  pod 'EngageKit', '4.1.0'
